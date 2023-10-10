@@ -1,3 +1,6 @@
+[core]
+    editor = code --wait --new-window
+
 [user]
     email = alexey.korkota@gmail.com
     name = Alexey Korkota
