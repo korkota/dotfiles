@@ -1,18 +1,18 @@
 [core]
-    editor = code --wait
+  editor = code --wait
 
 [user]
-    email = alexey.korkota@gmail.com
-    name = Alexey Korkota
+  email = alexey.korkota@gmail.com
+  name = Alexey Korkota
 
 [diff]
-    tool = vscode
+  tool = vscode
 
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 
 [merge]
-    tool = vscode
+  tool = vscode
 
 [mergetool "vscode"]
-    cmd = code --wait $MERGED
+  cmd = code --wait $MERGED
