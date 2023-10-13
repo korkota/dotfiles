@@ -1,3 +1,5 @@
+#!/bin/bash
+
 git clone --bare git@github.com:korkota/dotfiles.git $HOME/.cfg
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
