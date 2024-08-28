@@ -13,4 +13,4 @@ Install config tracking in your `$HOME` by running:
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 ```
 
-[Import the main VSCode profile.](https://vscode.dev/profile/github/eae87326b159b9f4434060bc7e533134)\
+[Import the main VSCode profile.](https://vscode.dev/profile/github/eae87326b159b9f4434060bc7e533134)
