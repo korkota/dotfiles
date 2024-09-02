@@ -1,15 +1,18 @@
 # Dotfiles
 
-## Requirements
+## Dependencies
 
+Required
 - Git
 - Curl
+
+Optional
 - Vim
 - xclip
 
 ## Install
 
-Install config tracking in your `$HOME` by running:
+Copy and run the script below to install the config in your `$HOME`:
 
 ```shell
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
