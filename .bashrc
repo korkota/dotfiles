@@ -19,9 +19,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source <(minikube completion bash 2> /dev/null)
-source <(kubectl completion bash 2> /dev/null)
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -77,3 +74,6 @@ bind -m vi-command -x '"P": paste_from_clipboard 0'
 bind -m vi-command -x '"p": paste_from_clipboard 1'
 bind -m vi-command -x '"yy": yank_line_to_clipboard'
 bind -m vi-command -x '"dd": kill_line_to_clipboard'
+
+[ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+

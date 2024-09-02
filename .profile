@@ -4,3 +4,4 @@ fi
 EDITOR=$VISUAL
 export VISUAL EDITOR
 
+[ ! -r "$HOME/.profile.local" ] || . "$HOME/.profile.local"
