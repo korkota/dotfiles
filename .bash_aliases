@@ -79,4 +79,8 @@ alias gwtls='git worktree list'
 alias gwtmv='git worktree move'
 alias gwtrm='git worktree remove'
 
-alias wakeupaplha='wakeonlan -i 192.168.0.49 08:60:6E:DA:07:E8'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+[ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
