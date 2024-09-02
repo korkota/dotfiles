@@ -4,6 +4,8 @@
 
 - Git
 - Curl
+- Vim
+- xclip
 
 ## Install
 
