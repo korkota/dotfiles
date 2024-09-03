@@ -18,4 +18,4 @@ Copy and run the script below to install the config in your `$HOME`:
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 ```
 
-[Import `Default` VSCode profile.](https://vscode.dev/profile/github/44fb332e7c290d42496f2175ffa2fe46)
+[Import the `Default` VSCode profile.](https://vscode.dev/profile/github/44fb332e7c290d42496f2175ffa2fe46)
