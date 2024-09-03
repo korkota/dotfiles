@@ -3,12 +3,14 @@
 ## Dependencies
 
 Required
-- Git
-- Curl
+- curl
+- git
 
 Optional
-- Vim
-- xclip
+- ripgrep
+- vim
+- vim-plug
+- xclip 
 
 ## Install
 
