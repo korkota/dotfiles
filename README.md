@@ -7,7 +7,11 @@ Required
 - git
 
 Optional
+- fd
 - ripgrep
+- neovim
+- nerd font
+- deps to build vscode-js-debugger `sudo apt-get install libsecret-1-dev`
 - vim
 - vim-plug
 - xclip 
