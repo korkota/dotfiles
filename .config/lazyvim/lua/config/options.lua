@@ -9,3 +9,5 @@ vim.opt.breakindent = true
 
 vim.opt.undofile = true
 vim.opt.swapfile = false
+
+vim.opt.clipboard = ""
