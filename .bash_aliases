@@ -83,4 +83,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias lazyvim='NVIM_APPNAME=lazyvim nvim'
+
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
