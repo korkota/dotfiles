@@ -1,5 +1,8 @@
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+alias devup='devcontainer up --workspace-folder=. --dotfiles-repository=https://github.com/korkota/dotfiles --dotfiles-install-command=.bin/install_with_deps.sh'
+alias devexec='devcontainer exec --workspace-folder=. bash -l'
+
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
