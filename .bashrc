@@ -23,19 +23,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-GIT_PS1_SHOWDIRTYSTATE=yes
-GIT_PS1_SHOWUNTRACKEDFILES=yes
-GIT_PS1_SHOWUPSTREAM=auto
-GIT_PS1_SHOWCONFLICTSTATE=yes
-GIT_PS1_SHOWCOLORHINTS=yes
-case "$TERM" in
-    xterm-color|*-256color) GIT_PS1_SHOWCOLORHINTS=yes;;
-esac
-PROMPT_DIRTRIM=3
-get_return_code_sign () {
-    if [ $? == 0 ]; then echo \$; else echo X; fi
-}
-PROMPT_COMMAND='__git_ps1 "\W" " $(get_return_code_sign) "'
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=yes
+  GIT_PS1_SHOWUNTRACKEDFILES=yes
+  GIT_PS1_SHOWUPSTREAM=auto
+  GIT_PS1_SHOWCONFLICTSTATE=yes
+  GIT_PS1_SHOWCOLORHINTS=yes
+  case "$TERM" in
+      xterm-color|*-256color) GIT_PS1_SHOWCOLORHINTS=yes;;
+  esac
+  PROMPT_DIRTRIM=3
+  get_return_code_sign () {
+      if [ $? == 0 ]; then echo \$; else echo X; fi
+  }
+  PROMPT_COMMAND='__git_ps1 "\W" " $(get_return_code_sign) "'
+fi
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
