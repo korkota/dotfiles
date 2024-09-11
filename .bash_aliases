@@ -84,5 +84,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias lazyvim='NVIM_APPNAME=lazyvim nvim'
+type nvim >/dev/null 2>&1 && alias vim='nvim'
+alias oldvim="\vim"
 
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"

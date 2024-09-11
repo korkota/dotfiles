@@ -4,4 +4,6 @@ fi
 EDITOR=$VISUAL
 export VISUAL EDITOR
 
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 [ ! -r "$HOME/.profile.local" ] || . "$HOME/.profile.local"
