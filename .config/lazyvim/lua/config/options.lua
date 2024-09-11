@@ -11,3 +11,5 @@ vim.opt.undofile = true
 vim.opt.swapfile = false
 
 vim.opt.clipboard = ""
+
+vim.opt.shell="/bin/bash"
