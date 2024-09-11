@@ -17,5 +17,6 @@ fi
 curl -o "$HOME/.git-prompt.sh" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 config checkout
 config config status.showUntrackedFiles no
+config remote set-url origin git@github.com:korkota/dotfiles.git
 
 echo "Dotfiles has been installed."
