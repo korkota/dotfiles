@@ -1,7 +1,7 @@
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias devup='devcontainer up --workspace-folder=. --dotfiles-repository=https://github.com/korkota/dotfiles --dotfiles-install-command=.bin/install_with_deps.sh'
-alias devexec='devcontainer exec --workspace-folder=. bash -l'
+alias devup='devcontainer up --remove-existing-container --workspace-folder=. --mount "type=bind,source=$HOME/.ssh,target=/home/node/.ssh" --mount "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix" --dotfiles-repository=https://github.com/korkota/dotfiles --dotfiles-install-command=.bin/install_with_deps.sh'
+alias devexec='devcontainer exec --workspace-folder=. --remote-env="DISPLAY=$DISPLAY" bash -l'
 
 alias g='git'
 alias ga='git add'
