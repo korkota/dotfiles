@@ -1,21 +1,19 @@
 [core]
-  editor = vim
-
-[diff]
-  tool = vscode
-
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
-
+	editor = nvim
+; [diff]
+; 	tool = vscode
+; [difftool "vscode"]
+; 	cmd = code --wait --diff $LOCAL $REMOTE
 [init]
-  defaultBranch = main
-
-[merge]
-  tool = vscode
-
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
-
+	defaultBranch = main
+; [merge]
+; 	tool = vscode
+; [mergetool "vscode"]
+; 	cmd = code --wait $MERGED
 [user]
-  email = alexey.korkota@gmail.com
-  name = Alexey Korkota
+	email = alexey.korkota@gmail.com
+	name = Alexey Korkota
+[pull]
+	ff = only
+[include]
+	path = .gitconfig.local
