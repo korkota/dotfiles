@@ -2,6 +2,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias devup='devcontainer up --remove-existing-container --workspace-folder=. --mount "type=bind,source=$HOME/.ssh,target=/home/node/.ssh" --mount "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix" --dotfiles-repository=https://github.com/korkota/dotfiles --dotfiles-install-command=.bin/install_with_deps.sh'
 alias devexec='devcontainer exec --workspace-folder=. --remote-env="DISPLAY=$DISPLAY" bash -l'
+alias devgenpass='devcontainer exec --workspace-folder=. --remote-env="DISPLAY=$DISPLAY" bash -c "sudo passwd \$(whoami)"'
+alias devssh='ssh -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null -X node@localhost'
+
+alias genxauth='touch -a .Xauthority && xauth add "$DISPLAY" . `mcookie`'
 
 alias g='git'
 alias ga='git add'
