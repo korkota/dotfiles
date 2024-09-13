@@ -8,7 +8,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 if ! shopt -oq posix; then
@@ -31,27 +31,27 @@ if [ -f ~/.git-prompt.sh ]; then
   GIT_PS1_SHOWCONFLICTSTATE=yes
   GIT_PS1_SHOWCOLORHINTS=yes
   case "$TERM" in
-      xterm-color|*-256color) GIT_PS1_SHOWCOLORHINTS=yes;;
+  xterm-color | *-256color) GIT_PS1_SHOWCOLORHINTS=yes ;;
   esac
   PROMPT_DIRTRIM=3
-  get_return_code_sign () {
-      if [ $? == 0 ]; then echo \$; else echo X; fi
+  get_return_code_sign() {
+    if [ $? == 0 ]; then echo \$; else echo X; fi
   }
   PROMPT_COMMAND='__git_ps1 "\W" " $(get_return_code_sign) "'
 fi
 
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
-set -o vi 
+set -o vi
 
-paste_from_clipboard () {
+paste_from_clipboard() {
   local shift=$1
 
   local head=${READLINE_LINE:0:READLINE_POINT+shift}
@@ -64,11 +64,11 @@ paste_from_clipboard () {
   let READLINE_POINT+=$paste_len+$shift-1
 }
 
-yank_line_to_clipboard () {
+yank_line_to_clipboard() {
   echo $READLINE_LINE | xclip -in -selection clipboard
 }
 
-kill_line_to_clipboard () {
+kill_line_to_clipboard() {
   yank_line_to_clipboard
   READLINE_LINE=""
 }
@@ -78,5 +78,8 @@ bind -m vi-command -x '"p": paste_from_clipboard 1'
 bind -m vi-command -x '"yy": yank_line_to_clipboard'
 bind -m vi-command -x '"dd": kill_line_to_clipboard'
 
-[ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+source <(minikube completion bash 2>/dev/null)
+source <(kubectl completion bash 2>/dev/null)
+source <(npm completion 2>/dev/null)
 
+[ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
