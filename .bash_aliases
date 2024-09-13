@@ -94,4 +94,6 @@ alias lazyvim='NVIM_APPNAME=lazyvim nvim'
 type nvim >/dev/null 2>&1 && alias vim='nvim'
 alias oldvim="\vim"
 
+alias ncu='npx npm-check-updates'
+
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
