@@ -1,5 +1,5 @@
 if [ -z "$VISUAL" ]; then
-  type vim >/dev/null 2>&1 && VISUAL=vim || VISUAL=vi
+  type nvim >/dev/null 2>&1 && VISUAL=lazyvim || VISUAL=vi
 fi
 EDITOR=$VISUAL
 export VISUAL EDITOR
