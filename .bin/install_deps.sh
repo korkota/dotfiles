@@ -5,10 +5,10 @@ set -e
 echo "Installing deps..."
 
 echo "Installing NeoVim..."
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+rm nvim-linux-x86_64.tar.gz
 
 echo "Installing ripgrep..."
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
