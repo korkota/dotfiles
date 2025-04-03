@@ -12,7 +12,7 @@ if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
   # Check for a currently running instance of the agent
