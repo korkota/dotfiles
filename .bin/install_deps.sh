@@ -17,6 +17,9 @@ rm ripgrep_14.1.0-1_amd64.deb
 
 sudo apt-get update
 
+echo "Installing fzf..."
+sudo apt install -y fzf
+
 echo "Installing fd..."
 sudo apt install -y fd-find
 
