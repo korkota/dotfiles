@@ -52,7 +52,6 @@ sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [main]
 
 shift = oneshot(shift)
-meta = oneshot(meta)
 control = oneshot(control)
 
 leftalt = oneshot(alt)
@@ -78,6 +77,6 @@ curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/i
 echo "Installing wezterm..."
 curl -LO https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
 sudo apt install -y ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
-rm -rf ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
+rm ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
 
 echo "All deps have been installed."
