@@ -39,6 +39,30 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "Installing vim plugins..."
 vim +'PlugInstall --sync' +qa
 
+echo "Installing keyd..."
+curl -LO "https://salsa.debian.org/debian/keyd/-/jobs/7274560/artifacts/raw/debian/output/keyd_2.5.0-2+salsaci+20250318+27_amd64.deb"
+sudo dpkg -i ./keyd_2.5.0-2+salsaci+20250318+27_amd64.deb
+rm ./keyd_2.5.0-2+salsaci+20250318+27_amd64.deb
+sudo systemctl enable keyd --now
+sudo tee /etc/keyd/default.conf >/dev/null <<EOF
+[ids]
+
+*
+
+[main]
+
+shift = oneshot(shift)
+meta = oneshot(meta)
+control = oneshot(control)
+
+leftalt = oneshot(alt)
+rightalt = oneshot(altgr)
+
+capslock = overload(control, esc)
+insert = S-insert
+EOF
+sudo keyd.rvaiya reload
+
 echo "Installing lazygit..."
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" |
   grep -Po '"tag_name": "v\K[^"]*')
