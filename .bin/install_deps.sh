@@ -15,7 +15,16 @@ curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_
 sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
 rm ripgrep_14.1.0-1_amd64.deb
 
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+
 sudo apt-get update
+
+echo "Installing syncthing..."
+sudo apt install -y syncthing
+systemctl --user enable syncthing.service
+systemctl --user start syncthing.service
 
 echo "Installing fzf..."
 sudo apt install -y fzf
