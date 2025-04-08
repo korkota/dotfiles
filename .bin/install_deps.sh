@@ -83,4 +83,14 @@ rm -rf lazygit lazygit.tar.gz
 echo "Installing lazydocker..."
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
+echo "Installing alacritty..."
+sudo snap install alacritty --classic
+curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+
+echo "Installing JetBrainsMono Nerd Font..."
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+[ -d $HOME/.fonts ] || mkdir $HOME/.fonts
+tar xf JetBrainsMono.tar.xz -C $HOME/.fonts
+rm JetBrainsMono.tar.xz
+
 echo "All deps have been installed."
