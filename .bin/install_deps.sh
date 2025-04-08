@@ -74,9 +74,4 @@ rm -rf lazygit lazygit.tar.gz
 echo "Installing lazydocker..."
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
-echo "Installing wezterm..."
-curl -LO https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
-sudo apt install -y ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
-rm ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
-
 echo "All deps have been installed."
