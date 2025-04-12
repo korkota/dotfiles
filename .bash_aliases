@@ -86,6 +86,8 @@ alias gwtls='git worktree list'
 alias gwtmv='git worktree move'
 alias gwtrm='git worktree remove'
 
+alias info='info --vi-keys'
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -94,6 +96,7 @@ alias lazyvim='NVIM_APPNAME=lazyvim nvim'
 type nvim >/dev/null 2>&1 && alias vim='nvim'
 alias oldvim="\vim"
 
+alias ncal='ncal -s RU -M -3'
 alias ncu='npx npm-check-updates'
 
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
