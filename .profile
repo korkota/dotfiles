@@ -4,6 +4,8 @@ fi
 EDITOR=$VISUAL
 export VISUAL EDITOR
 
+export MANPAGER='nvim +Man!'
+
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi

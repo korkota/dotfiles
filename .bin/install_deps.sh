@@ -37,6 +37,9 @@ sudo apt install -y xclip
 
 echo "Installing tmux..."
 sudo apt install -y tmux
+dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-completion"}/completions"
+mkdir -p "$dir"
+curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
 echo "Installing vim..."
 sudo apt install -y vim
@@ -89,8 +92,8 @@ curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/ala
 
 echo "Installing JetBrainsMono Nerd Font..."
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-[ -d $HOME/.fonts ] || mkdir $HOME/.fonts
-tar xf JetBrainsMono.tar.xz -C $HOME/.fonts
+[ -d "$HOME/.fonts" ] || mkdir "$HOME/.fonts"
+tar xf JetBrainsMono.tar.xz -C "$HOME/.fonts"
 rm JetBrainsMono.tar.xz
 
 echo "All deps have been installed."
