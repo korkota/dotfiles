@@ -90,6 +90,10 @@ echo "Installing alacritty..."
 sudo snap install alacritty --classic
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 
+echo "Installing LS_COLORS..."
+mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master | tar xzf - --directory=/tmp/LS_COLORS --strip=1
+(cd /tmp/LS_COLORS && make install)
+
 echo "Installing JetBrainsMono Nerd Font..."
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 [ -d "$HOME/.fonts" ] || mkdir "$HOME/.fonts"
