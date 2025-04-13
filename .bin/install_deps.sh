@@ -30,7 +30,9 @@ echo "Installing fzf..."
 sudo apt install -y fzf
 
 echo "Installing fd..."
-sudo apt install -y fd-find
+curl -LO https://github.com/sharkdp/fd/releases/download/v10.2.0/fd_10.2.0_amd64.deb
+sudo dpkg -i fd_10.2.0_amd64.deb
+rm fd_10.2.0_amd64.deb
 
 echo "Installing xclip..."
 sudo apt install -y xclip
