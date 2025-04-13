@@ -1,11 +1,3 @@
-if [ -z "$VISUAL" ]; then
-  type nvim >/dev/null 2>&1 && VISUAL=lazyvim || VISUAL=vi
-fi
-EDITOR=$VISUAL
-export VISUAL EDITOR
-
-export MANPAGER='nvim +Man!'
-
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
@@ -15,6 +7,13 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export MANPAGER="nvim +Man!"
+
+if [ -z "$VISUAL" ]; then
+  type nvim >/dev/null 2>&1 && VISUAL="nvim" || VISUAL="vi"
+fi
+EDITOR=$VISUAL
+export VISUAL EDITOR
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
   # Check for a currently running instance of the agent
@@ -23,7 +22,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     # Launch a new instance of the agent
     ssh-agent -s &>$HOME/.ssh/ssh-agent
   fi
-  eval $(cat $HOME/.ssh/ssh-agent) >/dev/null
+  eval "$(cat $HOME/.ssh/ssh-agent)" >/dev/null
   ssh-add $HOME/.ssh/id_ed25519 2>/dev/null
 fi
 
