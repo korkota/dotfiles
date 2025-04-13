@@ -8,7 +8,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+  . "$HOME/.bash_aliases"
 fi
 
 if ! shopt -oq posix; then
@@ -24,7 +24,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
+  source "$HOME/.git-prompt.sh"
   GIT_PS1_SHOWDIRTYSTATE=yes
   GIT_PS1_SHOWUNTRACKEDFILES=yes
   GIT_PS1_SHOWUPSTREAM=auto
@@ -40,10 +40,10 @@ if [ -f ~/.git-prompt.sh ]; then
   PROMPT_COMMAND='__git_ps1 "\W" " $(get_return_code_sign) "'
 fi
 
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
+if [ -e "$HOME/.local/share/lscolors.sh" ]; then
+  source "$HOME/.local/share/lscolors.sh"
 
+  alias ls='ls --color=auto'
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
@@ -57,7 +57,8 @@ paste_from_clipboard() {
   local head=${READLINE_LINE:0:READLINE_POINT+shift}
   local tail=${READLINE_LINE:READLINE_POINT+shift}
 
-  local paste=$(xclip -out -selection clipboard)
+  local paste
+  paste=$(xclip -out -selection clipboard)
   local paste_len=${#paste}
 
   READLINE_LINE=${head}${paste}${tail}
@@ -78,8 +79,11 @@ bind -m vi-command -x '"p": paste_from_clipboard 1'
 bind -m vi-command -x '"yy": yank_line_to_clipboard'
 bind -m vi-command -x '"dd": kill_line_to_clipboard'
 
+# shellcheck disable=SC1090
 source <(minikube completion bash 2>/dev/null)
+# shellcheck disable=SC1090
 source <(kubectl completion bash 2>/dev/null)
+# shellcheck disable=SC1090
 source <(npm completion 2>/dev/null)
 
 [ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
