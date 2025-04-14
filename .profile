@@ -7,7 +7,6 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export MANPAGER="nvim +Man!"
 
 if [ -z "$VISUAL" ]; then
   type nvim >/dev/null 2>&1 && VISUAL="nvim" || VISUAL="vi"
