@@ -43,16 +43,6 @@ dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-complet
 mkdir -p "$dir"
 curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
-echo "Installing vim..."
-sudo apt install -y vim
-
-echo "Installing vim-plug..."
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-echo "Installing vim plugins..."
-vim +'PlugInstall --sync' +qa
-
 echo "Installing keyd..."
 curl -LO "https://salsa.debian.org/debian/keyd/-/jobs/7274560/artifacts/raw/debian/output/keyd_2.5.0-2+salsaci+20250318+27_amd64.deb"
 sudo dpkg -i ./keyd_2.5.0-2+salsaci+20250318+27_amd64.deb
@@ -95,6 +85,9 @@ curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/ala
 echo "Installing LS_COLORS..."
 mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master | tar xzf - --directory=/tmp/LS_COLORS --strip=1
 (cd /tmp/LS_COLORS && make install)
+
+echo "Installing complete_alias..."
+curl -Lo "$HOME/complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
 
 echo "Installing JetBrainsMono Nerd Font..."
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz

@@ -87,3 +87,9 @@ source <(kubectl completion bash 2>/dev/null)
 source <(npm completion 2>/dev/null)
 
 [ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+
+if [ -f ~/complete_alias ]; then
+  # shellcheck disable=SC1094
+  . "$HOME/complete_alias"
+  complete -F _complete_alias "${!BASH_ALIASES[@]}"
+fi
