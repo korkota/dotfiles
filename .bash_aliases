@@ -91,6 +91,7 @@ alias info='info --vi-keys'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lsr='ls -AFhort'
 
 alias ncal='ncal -s RU -M -3'
 alias ncu='npx npm-check-updates'
