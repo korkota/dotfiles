@@ -8,7 +8,9 @@ vim.g.undotree_WindowLayout = 3
 
 vim.opt.breakindent = true
 vim.opt.clipboard = ""
+vim.opt.exrc = true
 vim.opt.shell = "/bin/bash"
+vim.opt.spellfile = vim.fn.expand("~") .. "/syncthing/nvim/spell/custom.utf-8.add"
 vim.opt.spelllang = { "ru", "en_us" }
 vim.opt.swapfile = false
 vim.opt.undofile = true
