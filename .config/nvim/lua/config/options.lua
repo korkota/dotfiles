@@ -12,5 +12,6 @@ vim.opt.exrc = true
 vim.opt.shell = "/bin/bash"
 vim.opt.spellfile = vim.fn.expand("~") .. "/syncthing/nvim/spell/custom.utf-8.add"
 vim.opt.spelllang = { "ru", "en_us" }
+vim.opt.spelloptions = { "camel" }
 vim.opt.swapfile = false
 vim.opt.undofile = true
