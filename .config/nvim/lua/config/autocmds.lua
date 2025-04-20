@@ -4,9 +4,12 @@
 
 -- Filetypes to enable spellcheck
 local spell_types = {
+  "bash",
   "javascript",
   "javascriptreact",
   "javascript.jsx",
+  "lua",
+  "sh",
   "typescript",
   "typescriptreact",
   "typescript.tsx",

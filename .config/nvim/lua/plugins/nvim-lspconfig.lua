@@ -7,9 +7,12 @@ return {
     servers = {
       typos_lsp = {
         filetypes = {
+          "bash",
           "javascript",
           "javascriptreact",
           "javascript.jsx",
+          "lua",
+          "sh",
           "typescript",
           "typescriptreact",
           "typescript.tsx",
