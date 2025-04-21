@@ -1,0 +1,74 @@
+#info
+0 add-digit-to-numeric-arg
+1 add-digit-to-numeric-arg
+2 add-digit-to-numeric-arg
+3 add-digit-to-numeric-arg
+4 add-digit-to-numeric-arg
+5 add-digit-to-numeric-arg
+6 add-digit-to-numeric-arg
+7 add-digit-to-numeric-arg
+8 add-digit-to-numeric-arg
+9 add-digit-to-numeric-arg
+
+j next-line
+k prev-line
+^J select-reference-this-line
+^M select-reference-this-line
+^] select-reference-this-line
+\mj move-to-next-xref
+\mk move-to-prev-xref
+J move-to-next-xref
+K move-to-prev-xref
+\^ beginning-of-line
+$ end-of-line
+l forward-char
+h backward-char
+w forward-word
+W forward-word
+b backward-word
+B backward-word
+gg beginning-of-node
+G end-of-node
+M move-to-window-line
+
+^f scroll-forward-page-only
+^b scroll-backward-page-only
+^e down-line
+^y up-line
+^d scroll-half-screen-down
+^u scroll-half-screen-up
+zt redraw-display
+
+u up-node
+d dir-node
+^n next-node
+^p prev-node
+^o history-node
+^t history-node
+^h list-visited-nodes
+# This is actually ^/, but for some reason it is expressed as ^_
+^_ clear-search
+
+i virtual-index
+I index-apropos
+
+^w^w next-window
+^ww next-window
+^wj next-window
+^wk prev-window
+^ws split-window
+^wX delete-window
+^wq delete-window
+^wc delete-window
+^wo keep-one-window
+^w+ grow-window
+^w= tile-windows
+
+^g abort-key
+
+#var
+active-link-style=blue,bold,underline
+highlight-searches=On
+link-style=blue,bold
+match-style=bgred,white,bold
+scroll-behavior=Page Only
