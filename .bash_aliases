@@ -95,5 +95,6 @@ alias lsr='ls -AFhort'
 
 alias ncal='ncal -s RU -M -3'
 alias ncu='npx npm-check-updates'
+alias m="MANPAGER='nvim --clean +Man!' man"
 
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
