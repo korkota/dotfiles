@@ -13,18 +13,12 @@ fi
 export PATH
 
 VISUAL="vi"
-EDITOR=$VISUAL
-SUDO_EDITOR=$VISUAL
-SYSTEMD_EDITOR=$VISUAL
-
 if type nvim >/dev/null 2>&1; then
-  VISUAL="nvim"
-  EDITOR=$VISUAL
-  SUDO_EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
-  SYSTEMD_EDITOR=$SUDO_EDITOR
+  VISUAL="/opt/nvim-linux-x86_64/bin/nvim"
 fi
+EDITOR=$VISUAL
 
-export VISUAL EDITOR SUDO_EDITOR SYSTEMD_EDITOR
+export VISUAL EDITOR
 
 export GIT_COMPLETION_SHOW_ALL=1
 

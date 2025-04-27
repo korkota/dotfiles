@@ -95,4 +95,10 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBra
 tar xf JetBrainsMono.tar.xz -C "$HOME/.fonts"
 rm JetBrainsMono.tar.xz
 
+echo "Installing the sudoers config..."
+sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
+Defaults timestamp_type=global,timestamp_timeout=240
+Defaults:%sudo env_keep += "VISUAL EDITOR"
+EOF
+
 echo "All deps have been installed."
