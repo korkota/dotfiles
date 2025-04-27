@@ -6,19 +6,25 @@ if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-VISUAL="vi"
-SUDO_EDITOR=$VISUAL
-
 if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
   PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-  SUDO_EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
 fi
 
 export PATH
 
-type nvim >/dev/null 2>&1 && VISUAL="nvim"
+VISUAL="vi"
 EDITOR=$VISUAL
-export VISUAL EDITOR SUDO_EDITOR
+SUDO_EDITOR=$VISUAL
+SYSTEMD_EDITOR=$VISUAL
+
+if type nvim >/dev/null 2>&1; then
+  VISUAL="nvim"
+  EDITOR=$VISUAL
+  SUDO_EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+  SYSTEMD_EDITOR=$SUDO_EDITOR
+fi
+
+export VISUAL EDITOR SUDO_EDITOR SYSTEMD_EDITOR
 
 export GIT_COMPLETION_SHOW_ALL=1
 
