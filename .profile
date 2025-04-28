@@ -1,16 +1,30 @@
+path_prepend() {
+  for arg in "$@"; do
+    if [[ ":${PATH}:" != *":${arg}:"* ]]; then
+      export PATH="${arg}${PATH:+":$PATH"}"
+    fi
+  done
+}
+
+path_append() {
+  for arg in "$@"; do
+    if [[ ":${PATH}:" != *":${arg}:"* ]]; then
+      export PATH="${PATH:+"$PATH:"}${arg}"
+    fi
+  done
+}
+
 if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+  path_prepend "$HOME/bin"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
-  PATH="$HOME/.local/bin:$PATH"
+  path_prepend "$HOME/.local/bin"
 fi
 
 if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
-  PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+  path_append "/opt/nvim-linux-x86_64/bin"
 fi
-
-export PATH
 
 VISUAL="vi"
 if type nvim >/dev/null 2>&1; then
