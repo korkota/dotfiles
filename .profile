@@ -33,7 +33,7 @@ fi
 EDITOR=$VISUAL
 
 export VISUAL EDITOR
-
+export LESS='-R'
 export GIT_COMPLETION_SHOW_ALL=1
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
@@ -48,3 +48,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 [ ! -r "$HOME/.profile.local" ] || . "$HOME/.profile.local"
+
+unset -f path_append
+unset -f path_prepend

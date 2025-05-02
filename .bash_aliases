@@ -7,6 +7,13 @@ alias devssh='ssh -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev
 
 alias genxauth='touch -a .Xauthority && xauth add "$DISPLAY" . `mcookie`'
 
+alias grep='grep --color=auto'
+alias grepc='\grep --color=always'
+alias fgrep='fgrep --color=auto'
+alias fgrepc='\fgrep --color=always'
+alias egrep='egrep --color=auto'
+alias egrepc='\egrep --color=always'
+
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
@@ -88,13 +95,19 @@ alias gwtrm='git worktree remove'
 
 alias info='info --vi-keys'
 
+alias ls='ls --color=auto'
+alias lsc='\ls --color=always'
 alias ll='ls -alF'
+alias llc='lsc -alF'
 alias la='ls -A'
+alias lac='lsc -A'
 alias l='ls -CF'
+alias lc='lsc -CF'
 alias lsr='ls -AFhort'
+alias lsrc='lsc -AFhort'
 
-alias ncal='ncal -s RU -M -3'
-alias ncu='npx npm-check-updates'
 alias m="MANPAGER='nvim --clean +Man!' man"
+alias ncal='ncal -s RU -M -3 -b'
+alias ncu='npx npm-check-updates'
 
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"

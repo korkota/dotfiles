@@ -20,7 +20,9 @@ if ! shopt -oq posix; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
+# shellcheck disable=SC1091
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# shellcheck disable=SC1091
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 if [ -f ~/.git-prompt.sh ]; then
@@ -42,11 +44,6 @@ fi
 
 if [ -e "$HOME/.local/share/lscolors.sh" ]; then
   source "$HOME/.local/share/lscolors.sh"
-
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
 fi
 
 set -o vi
@@ -62,11 +59,11 @@ paste_from_clipboard() {
   local paste_len=${#paste}
 
   READLINE_LINE=${head}${paste}${tail}
-  let READLINE_POINT+=$paste_len+$shift-1
+  READLINE_POINT=$((READLINE_POINT + paste_len + shift - 1))
 }
 
 yank_line_to_clipboard() {
-  echo $READLINE_LINE | xclip -in -selection clipboard
+  echo "$READLINE_LINE" | xclip -in -selection clipboard
 }
 
 kill_line_to_clipboard() {
@@ -86,6 +83,7 @@ source <(kubectl completion bash 2>/dev/null)
 # shellcheck disable=SC1090
 source <(npm completion 2>/dev/null)
 
+# shellcheck disable=SC1091
 [ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
 if [ -f ~/complete_alias ]; then

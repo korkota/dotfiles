@@ -53,6 +53,10 @@ return {
       },
     },
 
+    completion = {
+      blink = true,
+    },
+
     daily_notes = {
       folder = "daily_notes",
       template = "daily.md",
