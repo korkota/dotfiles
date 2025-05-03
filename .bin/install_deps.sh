@@ -56,16 +56,14 @@ sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 
 [main]
 
-shift = oneshot(shift)
-control = oneshot(control)
-
-leftalt = oneshot(alt)
-rightalt = oneshot(altgr)
-
 capslock = overload(control, esc)
-insert = S-insert
 EOF
 sudo keyd.rvaiya reload
+# it looks like the keyd-application-mapper package is broken
+# curl -LO "https://salsa.debian.org/debian/keyd/-/jobs/7274560/artifacts/file/debian/output/keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb"
+# sudo dpkg -i keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb
+# rm ./keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb
+# usermod -aG keyd $(whoami)
 
 echo "Installing lazygit..."
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" |
