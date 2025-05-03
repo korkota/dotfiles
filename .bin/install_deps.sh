@@ -118,4 +118,11 @@ rm gnome-bedtime-mode_22.0.zip
 echo "Installing the extension manager..."
 sudo apt install -y gnome-shell-extension-manager
 
+echo "Installing the nvm..."
+mkdir "$NVM_DIR"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | PROFILE=/dev/null bash
+# shellcheck source=/dev/null
+. "$NVM_DIR/nvm.sh"
+nvm install node
+
 echo "All deps have been installed."

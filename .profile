@@ -35,6 +35,7 @@ EDITOR=$VISUAL
 export VISUAL EDITOR
 export LESS='-R'
 export GIT_COMPLETION_SHOW_ALL=1
+export NVM_DIR="$HOME/.nvm"
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
   # Check for a currently running instance of the agent
