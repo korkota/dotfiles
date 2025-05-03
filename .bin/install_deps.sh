@@ -4,6 +4,16 @@ set -e
 
 echo "Installing deps..."
 
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+
+sudo add-apt-repository ppa:keyd-team/ppa
+
+sudo apt update
+
+sudo apt install -y build-essential
+
 echo "Installing NeoVim..."
 curl -LO https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
@@ -14,13 +24,6 @@ echo "Installing ripgrep..."
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb
 sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
 rm ripgrep_14.1.0-1_amd64.deb
-
-sudo mkdir -p /etc/apt/keyrings
-sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-
-sudo apt-get update
-sudo apt install -y build-essential
 
 echo "Installing syncthing..."
 sudo apt install -y syncthing
@@ -45,9 +48,7 @@ mkdir -p "$dir"
 curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
 echo "Installing keyd..."
-curl -LO "https://salsa.debian.org/debian/keyd/-/jobs/7274560/artifacts/raw/debian/output/keyd_2.5.0-2+salsaci+20250318+27_amd64.deb"
-sudo dpkg -i ./keyd_2.5.0-2+salsaci+20250318+27_amd64.deb
-rm ./keyd_2.5.0-2+salsaci+20250318+27_amd64.deb
+sudo apt install -y keyd keyd-application-mapper
 sudo systemctl enable keyd --now
 sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 [ids]
@@ -59,11 +60,11 @@ sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 capslock = overload(control, esc)
 EOF
 sudo keyd.rvaiya reload
-# it looks like the keyd-application-mapper package is broken
-# curl -LO "https://salsa.debian.org/debian/keyd/-/jobs/7274560/artifacts/file/debian/output/keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb"
-# sudo dpkg -i keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb
-# rm ./keyd-application-mapper_2.5.0-2+salsaci+20250318+27_all.deb
-# usermod -aG keyd $(whoami)
+mkdir -p ~/.local/share/gnome-shell/extensions
+ln -s /usr/local/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/keyd
+sudo ln -s /usr/bin/keyd.rvaiya /usr/bin/keyd
+# run after reboot
+# gnome-extensions enable keyd
 
 echo "Installing lazygit..."
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" |
@@ -113,5 +114,8 @@ gnome-extensions install --force gnome-bedtime-mode_22.0.zip
 rm gnome-bedtime-mode_22.0.zip
 # run after reboot
 # gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
+
+echo "Installing the extension manager..."
+sudo apt install -y gnome-shell-extension-manager
 
 echo "All deps have been installed."

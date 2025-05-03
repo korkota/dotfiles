@@ -8,11 +8,11 @@ alias devssh='ssh -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev
 alias genxauth='touch -a .Xauthority && xauth add "$DISPLAY" . `mcookie`'
 
 alias grep='grep --color=auto'
-alias grepc='\grep --color=always'
+alias grepc='grep --color=always'
 alias fgrep='fgrep --color=auto'
-alias fgrepc='\fgrep --color=always'
+alias fgrepc='fgrep --color=always'
 alias egrep='egrep --color=auto'
-alias egrepc='\egrep --color=always'
+alias egrepc='egrep --color=always'
 
 alias g='git'
 alias ga='git add'
@@ -96,7 +96,7 @@ alias gwtrm='git worktree remove'
 alias info='info --vi-keys'
 
 alias ls='ls --color=auto'
-alias lsc='\ls --color=always'
+alias lsc='ls --color=always'
 alias ll='ls -alF'
 alias llc='lsc -alF'
 alias la='ls -A'
