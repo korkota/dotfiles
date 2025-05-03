@@ -91,7 +91,7 @@ echo "Installing complete_alias..."
 curl -Lo "$HOME/complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
 
 echo "Installing JetBrainsMono Nerd Font..."
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 [ -d "$HOME/.fonts" ] || mkdir "$HOME/.fonts"
 tar xf JetBrainsMono.tar.xz -C "$HOME/.fonts"
 rm JetBrainsMono.tar.xz
@@ -101,5 +101,19 @@ sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
 Defaults timestamp_type=global,timestamp_timeout=240
 Defaults:%sudo env_keep += "VISUAL EDITOR"
 EOF
+
+echo "Installing the g3kb-switch..."
+curl -LO https://github.com/lyokha/g3kb-switch/releases/download/1.5/g3kb-switch-1.5-Linux.deb
+sudo dpkg -i g3kb-switch-1.5-Linux.deb
+rm g3kb-switch-1.5-Linux.deb
+# run after reboot
+# gnome-extensions enable g3kb-switch@g3kb-switch.org
+
+echo "Installing the GNOME Bedtime extension..."
+curl -LO https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v22.0/gnome-bedtime-mode_22.0.zip
+gnome-extensions install --force gnome-bedtime-mode_22.0.zip
+rm gnome-bedtime-mode_22.0.zip
+# run after reboot
+# gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
 
 echo "All deps have been installed."
