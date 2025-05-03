@@ -59,10 +59,11 @@ sudo tee /etc/keyd/default.conf >/dev/null <<EOF
 
 capslock = overload(control, esc)
 EOF
-sudo keyd.rvaiya reload
-mkdir -p ~/.local/share/gnome-shell/extensions
-ln -s /usr/local/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/keyd
 sudo ln -s /usr/bin/keyd.rvaiya /usr/bin/keyd
+sudo keyd reload
+sudo usermod -aG keyd "$(whoami)"
+mkdir -p ~/.local/share/gnome-shell/extensions
+ln -s /usr/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/keyd
 # run after reboot
 # gnome-extensions enable keyd
 
