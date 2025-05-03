@@ -20,6 +20,7 @@ sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthin
 echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
 sudo apt-get update
+sudo apt install -y build-essential
 
 echo "Installing syncthing..."
 sudo apt install -y syncthing
@@ -100,13 +101,5 @@ sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
 Defaults timestamp_type=global,timestamp_timeout=240
 Defaults:%sudo env_keep += "VISUAL EDITOR"
 EOF
-
-echo "Installing the xkb-switch..."
-sudo apt install -y cmake libxkbfile-dev
-curl -Lo xkb-switch.tar.gz https://github.com/sergei-mironov/xkb-switch/archive/refs/tags/1.8.5.tar.gz
-tar xzf xkb-switch.tar.gz xkb-switch-1.8.5
-(cd xkb-switch-1.8.5 && cmake . && make && sudo make install)
-sudo ldconfig
-rm -rf xkb-switch.tar.gz xkb-switch-1.8.5
 
 echo "All deps have been installed."

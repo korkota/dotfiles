@@ -5,9 +5,6 @@
 vim.g.lazyvim_prettier_needs_config = false
 vim.g.snacks_animate = false
 vim.g.undotree_WindowLayout = 3
-vim.g.XkbSwitchEnabled = 1
-vim.g.XkbSwitchIMappings = { "ru" }
-vim.g.XkbSwitchLib = "/usr/local/lib/libxkbswitch.so"
 
 vim.opt.breakindent = true
 vim.opt.clipboard = ""
