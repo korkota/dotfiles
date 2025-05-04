@@ -28,6 +28,18 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   desc = "Enable spellcheck for defined filetypes", -- Description for clarity
 })
 
+vim.api.nvim_create_augroup("Obsidian settings", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  group = "Obsidian settings",
+  pattern = vim.fn.expand("~") .. "/syncthing/obsidian/*.md",
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.textwidth = 80
+    vim.opt_local.colorcolumn = "81"
+  end,
+  desc = "Settings for Obsidian files",
+})
+
 -- Disable autoformat for lua files
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
 --   pattern = { "lua" },

@@ -88,7 +88,7 @@ mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/
 (cd /tmp/LS_COLORS && make install)
 
 echo "Installing complete_alias..."
-curl -Lo "$HOME/complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
+curl -Lo "$HOME/.complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
 
 echo "Installing JetBrainsMono Nerd Font..."
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
@@ -101,6 +101,15 @@ sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
 Defaults timestamp_type=global,timestamp_timeout=240
 Defaults:%sudo env_keep += "VISUAL EDITOR"
 EOF
+
+echo "Installing the trash-cli..."
+sudo apt install -y trash-cli
+
+echo "Installing the tldr..."
+sudo apt install -y tldr
+
+echo "Installing the gnome-tweaks..."
+sudo apt install -y gnome-tweaks
 
 echo "Installing the g3kb-switch..."
 curl -LO https://github.com/lyokha/g3kb-switch/releases/download/1.5/g3kb-switch-1.5-Linux.deb
