@@ -1,30 +1,22 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  version = "*", -- recommended, use latest release instead of latest commit
+  version = "*",
   lazy = true,
-  -- ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    -- refer to `:h file-pattern` for more examples
 
-    "BufReadPre "
-      .. vim.fn.expand("~")
-      .. "/syncthing/obsidian/korkota/*.md",
+  event = {
+    "BufReadPre " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
     "BufNewFile " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
   },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
 
-    -- see below for full list of optional dependencies 👇
+  dependencies = {
+    "nvim-lua/plenary.nvim",
   },
+
   keys = {
     { "<localleader>Ob", ":ObsidianBacklinks<cr>", desc = "Obsidian [b]acklinks" },
     { "<localleader>Oc", ":ObsidianToggleCheckbox<cr>", desc = "Obsidian toggle [c]heckbox" },
     { "<leader>Od", ":ObsidianDailies<cr>", desc = "Obsidian [d]ailies" },
-    { "<leader>Oe", ":ObsidianExtractNote<cr>", desc = "Obsidian [e]xtract note" },
+    { "<leader>Oe", ":ObsidianExtractNote<cr>", desc = "Obsidian [e]xtract note", mode = { "x" } },
     { "<localleader>Of", ":ObsidianFollowLink<cr>", desc = "Obsidian [f]ollow link" },
     { "<leader>Og", ":ObsidianTags<cr>", desc = "Obsidian ta[g]s" },
     { "<leader>Oi", ":ObsidianPasteImg<cr>", desc = "Obsidian paste [i]mage" },
@@ -36,24 +28,18 @@ return {
     { "<leader>Op", ":ObsidianTemplate<cr>", desc = "Obsidian Tem[p]late" },
     { "<leader>Or", ":ObsidianRename<cr>", desc = "Obsidian [r]ename" },
     { "<leader>Os", ":ObsidianSearch<cr>", desc = "Obsidian [s]earch" },
-    { "<localleader>Os", ":ObsidianLink<cr>", desc = "Obsidian link [s]election" },
-    { "<localleader>OS", ":ObsidianLinkNew<cr>", desc = "Obsidian link [S]election" },
+    { "<localleader>Os", ":ObsidianLink ", desc = "Obsidian link [s]election to", mode = { "x" } },
+    { "<localleader>OS", ":ObsidianLinkNew ", desc = "Obsidian link [S]election to new note", mode = { "x" } },
     { "<leader>Ot", ":ObsidianToday<cr>", desc = "Obsidian [t]oday" },
     { "<leader>OT", ":ObsidianTomorrow<cr>", desc = "Obsidian [T]omorrow" },
     { "<localleader>OT", ":ObsidianTOC<cr>", desc = "Obsidian [T]OC" },
     { "<leader>Ow", ":ObsidianWorkspace<cr>", desc = "Obsidian [w]orkspace" },
     { "<leader>Oy", ":ObsidianYesterday<cr>", desc = "Obsidian [y]esterday" },
   },
-  opts = {
-    -- ui = { enable = false },
-    workspaces = {
-      {
-        name = "personal",
-        path = "~/syncthing/obsidian/korkota/",
-      },
-    },
 
+  opts = {
     completion = {
+      nvim_cmp = false,
       blink = true,
     },
 
@@ -66,10 +52,34 @@ return {
       folder = "templates",
     },
 
-    follow_url_func = function(url)
-      -- Open the URL in the default web browser.
-      -- vim.fn.jobstart({ "open", url }) -- Mac OS
-      vim.fn.jobstart({ "wsl-open", url })
+    note_id_func = function(title)
+      if title ~= nil then
+        return title
+      else
+        return "untitled"
+      end
     end,
+
+    new_notes_location = "notes_subdir",
+
+    notes_subdir = "drafts",
+
+    ui = {
+      checkboxes = {
+        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+        -- [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+        -- ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+        -- ["!"] = { char = "", hl_group = "ObsidianImportant" },
+      },
+    },
+
+    workspaces = {
+      {
+        name = "personal",
+        path = "~/syncthing/obsidian/korkota/",
+      },
+    },
   },
 }
