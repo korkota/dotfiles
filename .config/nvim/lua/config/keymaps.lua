@@ -10,3 +10,7 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from the clip
 vim.keymap.set("n", "<leader>P", [["+P]], { desc = "Paste from the clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to the clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy to the clipboard" })
+
+vim.keymap.set("i", "№", "#")
+
+-- TIP: :so %

@@ -3,6 +3,21 @@ return {
   version = "*",
   lazy = true,
 
+  -- attachments = {
+  --   img_text_func = function(client, path)
+  --     path = client:vault_relative_path(path) or path
+  --     if not path:is_absolute() then
+  --       local p = require("obsidian.path")
+  --       local note = client:vault_relative_path(p.buffer())
+  --       local parents = #note:parents() - 1 -- as parents() also contains the dot dir
+  --       path = tostring(path)
+  --       path = ("../"):rep(parents) .. path
+  --       path = p.new(path)
+  --     end
+  --     return string.format("![%s](%s)", path.name, path)
+  --   end,
+  -- },
+
   event = {
     "BufReadPre " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
     "BufNewFile " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
@@ -38,6 +53,14 @@ return {
   },
 
   opts = {
+    attachments = {
+      img_text_func = function(client, path)
+        path = client:vault_relative_path(path) or path
+        local path_string = vim.uri_encode(vim.fs.basename(tostring(path)))
+        return string.format("![%s](%s)", path.name, path_string)
+      end,
+    },
+
     completion = {
       nvim_cmp = false,
       blink = true,

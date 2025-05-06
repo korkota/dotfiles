@@ -40,6 +40,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   desc = "Settings for Obsidian files",
 })
 
+vim.api.nvim_create_user_command(
+  "Accent",
+  [[exe "normal a\<c-v>u0301\<c-c>"]],
+  { desc = "Insert the accent unicode symbol" }
+)
+
 -- Disable autoformat for lua files
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
 --   pattern = { "lua" },

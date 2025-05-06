@@ -135,4 +135,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | PROFI
 . "$NVM_DIR/nvm.sh"
 nvm install node
 
+echo "Installing the Obsidian..."
+sudo snap install obsidian --classic
+
 echo "All deps have been installed."
