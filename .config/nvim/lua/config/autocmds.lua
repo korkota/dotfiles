@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     vim.opt_local.spell = true
     vim.opt_local.textwidth = 80
     vim.opt_local.colorcolumn = "81"
+    vim.opt_local.wrap = false
   end,
   desc = "Settings for Obsidian files",
 })

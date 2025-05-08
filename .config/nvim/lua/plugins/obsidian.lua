@@ -3,21 +3,6 @@ return {
   version = "*",
   lazy = true,
 
-  -- attachments = {
-  --   img_text_func = function(client, path)
-  --     path = client:vault_relative_path(path) or path
-  --     if not path:is_absolute() then
-  --       local p = require("obsidian.path")
-  --       local note = client:vault_relative_path(p.buffer())
-  --       local parents = #note:parents() - 1 -- as parents() also contains the dot dir
-  --       path = tostring(path)
-  --       path = ("../"):rep(parents) .. path
-  --       path = p.new(path)
-  --     end
-  --     return string.format("![%s](%s)", path.name, path)
-  --   end,
-  -- },
-
   event = {
     "BufReadPre " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
     "BufNewFile " .. vim.fn.expand("~") .. "/syncthing/obsidian/korkota/*.md",
@@ -38,6 +23,7 @@ return {
     { "<localleader>Ol", ":ObsidianLinks<cr>", desc = "Obsidian [l]inks" },
     { "<leader>Om", ":ObsidianNewFromTemplate<cr>", desc = "Obsidian note from te[m]plate" },
     { "<leader>On", ":ObsidianNew<cr>", desc = "Obsidian [n]ew" },
+    { "<leader>ON", ":ObsidianNew tags/", desc = "Obsidian [n]ew tag" },
     { "<leader>Oo", ":ObsidianQuickSwitch<cr>", desc = "Obsidian [o]pen quickswitch" },
     { "<leader>OO", ":ObsidianOpen<cr>", desc = "Obsidian [O]pen in app" },
     { "<leader>Op", ":ObsidianTemplate<cr>", desc = "Obsidian Tem[p]late" },

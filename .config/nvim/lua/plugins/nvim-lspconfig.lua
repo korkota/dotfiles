@@ -1,9 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
   opts = {
-    -- codelens = {
-    --   enabled = true,
-    -- },
+    codelens = {
+      enabled = true,
+    },
+
     servers = {
       typos_lsp = {
         filetypes = {

@@ -138,4 +138,7 @@ nvm install node
 echo "Installing the Obsidian..."
 sudo snap install obsidian --classic
 
+echo "Installing the VLC player..."
+sudo apt install -y vlc
+
 echo "All deps have been installed."
