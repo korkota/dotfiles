@@ -663,7 +663,7 @@ qt-privacy-ask=0
 [alsa] # ALSA audio output
 
 # Audio output device (string)
-#alsa-audio-device=default
+alsa-audio-device=plughw:CARD=I82801AAICH,DEV=0
 
 # Audio output channels (integer)
 #alsa-audio-channels=6
@@ -3851,7 +3851,7 @@ sout-x264-tune=film
 #audio-time-stretch=1
 
 # Audio output module (string)
-#aout=
+aout=alsa
 
 # Media role (string)
 #role=video
@@ -4154,16 +4154,16 @@ vout=any
 #meta-url=
 
 # File caching (ms) (integer)
-#file-caching=1000
+file-caching=100
 
 # Live capture caching (ms) (integer)
-#live-caching=300
+live-caching=130
 
 # Disc caching (ms) (integer)
-#disc-caching=300
+disc-caching=130
 
 # Network caching (ms) (integer)
-#network-caching=1000
+network-caching=100
 
 # Clock reference average counter (integer)
 #cr-average=40
@@ -4262,7 +4262,7 @@ vout=any
 #packetizer=
 
 # VoD server module (string)
-#vod-server=
+vod-server=any
 
 # Use a plugins cache (boolean)
 #plugins-cache=1
@@ -4391,7 +4391,7 @@ playlist-tree=1
 key-leave-fullscreen=
 
 # Play/Pause (string)
-#global-key-play-pause=
+global-key-play-pause=Ctrl+Alt+k
 
 # Play/Pause (string)
 key-play-pause=k
@@ -4412,13 +4412,13 @@ key-play=
 #global-key-faster=
 
 # Faster (string)
-key-faster=Shift+>
+key-faster=
 
 # Slower (string)
 #global-key-slower=
 
 # Slower (string)
-key-slower=Shift+<
+key-slower=
 
 # Normal rate (string)
 #global-key-rate-normal=
@@ -4430,13 +4430,13 @@ key-slower=Shift+<
 #global-key-rate-faster-fine=
 
 # Faster (fine) (string)
-#key-rate-faster-fine=]
+key-rate-faster-fine=Shift+>
 
 # Slower (fine) (string)
 #global-key-rate-slower-fine=
 
 # Slower (fine) (string)
-#key-rate-slower-fine=[
+key-rate-slower-fine=Shift+<
 
 # Next (string)
 #global-key-next=
@@ -4475,13 +4475,13 @@ key-jump-extrashort=Ctrl+Left
 key-jump+extrashort=Ctrl+Right
 
 # Short backwards jump (string)
-#global-key-jump-short=
+global-key-jump-short=Ctrl+Alt+j
 
 # Short backwards jump (string)
 key-jump-short=j
 
 # Short forward jump (string)
-#global-key-jump+short=
+global-key-jump+short=Ctrl+Alt+l
 
 # Short forward jump (string)
 key-jump+short=l

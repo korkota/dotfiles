@@ -13,7 +13,12 @@ vim.opt.clipboard = ""
 vim.opt.exrc = true
 vim.opt.shell = "/bin/bash"
 vim.opt.spellfile = vim.fn.expand("~") .. "/syncthing/nvim/spell/custom.utf-8.add"
-vim.opt.spelllang = { "ru", "en_us" }
+vim.opt.spelllang = { "ru", "en_us", "la" }
 vim.opt.spelloptions = { "camel" }
 vim.opt.swapfile = false
 vim.opt.undofile = true
+
+vim.cmd([[exe 'digr ac ' .. 0x0301]])
+vim.cmd([[exe 'digr ep ' .. 0x220E]])
+vim.cmd([[exe 'digr ne ' .. 0x2209]])
+vim.cmd([[exe 'digr nc ' .. 0x220C]])

@@ -55,6 +55,7 @@ return {
     daily_notes = {
       folder = "daily_notes",
       template = "daily.md",
+      workdays_only = false,
     },
 
     templates = {
@@ -74,6 +75,7 @@ return {
     notes_subdir = "drafts",
 
     ui = {
+      enable = false,
       checkboxes = {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
