@@ -22,20 +22,16 @@ if [ -d "$HOME/.local/bin" ]; then
   path_prepend "$HOME/.local/bin"
 fi
 
-if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
-  path_append "/opt/nvim-linux-x86_64/bin"
-fi
-
 VISUAL="vi"
 if type nvim >/dev/null 2>&1; then
-  VISUAL="/opt/nvim-linux-x86_64/bin/nvim"
+  VISUAL="/usr/bin/nvim"
 fi
 EDITOR=$VISUAL
 
 export VISUAL EDITOR
 export LESS='-R'
 export GIT_COMPLETION_SHOW_ALL=1
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/usr/share/nvm"
 
 if [ -d "$HOME/.ssh" ]; then
   if [ -z "$SSH_AUTH_SOCK" ]; then
