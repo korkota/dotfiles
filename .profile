@@ -31,7 +31,7 @@ EDITOR=$VISUAL
 export VISUAL EDITOR
 export LESS='-R'
 export GIT_COMPLETION_SHOW_ALL=1
-export NVM_DIR="/usr/share/nvm"
+export NVM_DIR="$HOME/.nvm"
 
 if [ -d "$HOME/.ssh" ]; then
   if [ -z "$SSH_AUTH_SOCK" ]; then
