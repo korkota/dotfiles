@@ -85,8 +85,13 @@ source <(npm completion 2>/dev/null)
 # shellcheck disable=SC1091
 [ ! -r "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
-if [ -f ~/.complete_alias ]; then
+if [ -f "$HOME/.complete_alias" ]; then
   # shellcheck disable=SC1094
   . "$HOME/.complete_alias"
   complete -F _complete_alias "${!BASH_ALIASES[@]}"
+fi
+
+if [ -f "$HOME/.postinstall.sh" ]; then
+  . "$HOME/.postinstall.sh"
+  rm "$HOME/.postinstall.sh"
 fi
