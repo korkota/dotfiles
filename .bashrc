@@ -41,8 +41,8 @@ if [ -f ~/.git-prompt.sh ]; then
   PROMPT_COMMAND='__git_ps1 "\W" " $(get_return_code_sign) "'
 fi
 
-if [ -e "$HOME/.local/share/lscolors.sh" ]; then
-  source "$HOME/.local/share/lscolors.sh"
+if [ -e "/usr/share/LS_COLORS/dircolors.sh" ]; then
+  source /usr/share/LS_COLORS/dircolors.sh
 fi
 
 set -o vi
