@@ -80,6 +80,8 @@ ssh-keygen -t ed25519
 echo "Installing .postinstall.sh..."
 tee "$HOME/.postinstall.sh" >/dev/null <<EOF
 #!/bin/bash
+gsettings set org.gnome.shell disable-extension-version-validation true
+
 gnome-extensions enable keyd@keyd.rvaiya.github.com
 gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
 gnome-extensions enable g3kb-switch@g3kb-switch.org
