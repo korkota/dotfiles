@@ -50,6 +50,7 @@ gnome-extensions install --force gnome-bedtime-mode_23.0.zip
 rm gnome-bedtime-mode_23.0.zip
 
 echo "Installing node..."
+# shellcheck source=/dev/null
 . /usr/share/nvm/init-nvm.sh
 nvm install node
 
@@ -73,11 +74,15 @@ paru --noconfirm --useask -S g3kb-switch
 echo "Installing lscolors..."
 paru --noconfirm --useask -S lscolors
 
+echo "Generating ssh keys..."
+ssh-keygen -t ed25519
+
 echo "Installing .postinstall.sh..."
 tee "$HOME/.postinstall.sh" >/dev/null <<EOF
 #!/bin/bash
 gnome-extensions enable keyd@keyd.rvaiya.github.com
 gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
+gnome-extensions enable g3kb-switch@g3kb-switch.org
 EOF
 
 echo "All deps have been installed."
