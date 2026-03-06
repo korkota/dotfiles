@@ -5,7 +5,7 @@ set -e
 echo "Installing deps..."
 
 sudo pacman -Syuq --noconfirm alacritty base-devel bash-completion chromium curl fd fzf git gnome gnome-tweaks keyd lazydocker lazygit \
-  less lua-jsregexp man man-db neovim networkmanager nvm obsidian openssh ripgrep sudo syncthing tldr \
+  less lua-jsregexp man man-db neovim networkmanager nvm obsidian openssh ripgrep sudo syncthing texinfo tldr \
   tmux trash-cli tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils vlc xclip zip
 
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
