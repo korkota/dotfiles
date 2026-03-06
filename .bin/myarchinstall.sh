@@ -84,5 +84,4 @@ gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
 gnome-extensions enable g3kb-switch@g3kb-switch.org
 EOF
 
-echo "Generating ssh keys..."
-ssh-keygen -t ed25519
+reboot
