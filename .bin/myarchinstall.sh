@@ -5,7 +5,7 @@ set -e
 echo "Installing deps..."
 
 sudo pacman -Syuq --noconfirm alacritty base-devel bash-completion chromium curl fd fzf git gnome gnome-tweaks keyd lazydocker lazygit \
-  less lua-jsregexp man man-db neovim networkmanager nvm obsidian openssh ripgrep sudo syncthing texinfo tldr \
+  less lua-jsregexp man man-db neovim networkmanager noto-fonts-emoji nvm obsidian openssh ripgrep sudo syncthing texinfo tldr \
   tmux trash-cli tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils vlc xclip zip
 
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
@@ -27,7 +27,7 @@ sudo usermod -aG keyd "$(whoami)"
 mkdir -p ~/.local/share/gnome-shell/extensions
 ln -s /usr/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/keyd\@keyd.rvaiya.github.com
 
-echo "Installing compilation for tmux..."
+echo "Installing completion for tmux..."
 dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-completion"}/completions"
 mkdir -p "$dir"
 curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"

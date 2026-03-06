@@ -1,18 +1,18 @@
 [font]
-size = 14
+size = 12
 
   [font.normal]
-  family = "JetBrainsMono Nerd Font"
+  family = "terminal-font"
   style = "Regular"
 
   [font.bold]
-  family = "JetBrainsMono Nerd Font"
+  family = "terminal-font"
   style = "Bold"
 
   [font.italic]
-  family = "JetBrainsMono Nerd Font"
+  family = "terminal-font"
   style = "Italic"
 
   [font.bold_italic]
-  family = "JetBrainsMono Nerd Font"
+  family = "terminal-font"
   style = "Bold Italic"
