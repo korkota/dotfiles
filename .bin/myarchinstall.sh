@@ -56,8 +56,6 @@ nvm install node
 
 echo "Adding the layout switch shortkey..."
 sudo localectl set-x11-keymap us,ru "" "" grp:alt_shift_toggle
-# dconf write /org/gnome/desktop/wm/keybindings/switch-input-source-backward "['<Shift>Alt_L']"
-# dconf write /org/gnome/desktop/wm/keybindings/switch-input-source "['<Alt>Shift_L']"
 
 echo "Enabling gdm..."
 sudo systemctl enable gdm.service
@@ -74,9 +72,22 @@ paru --noconfirm --useask -S g3kb-switch
 echo "Installing lscolors..."
 paru --noconfirm --useask -S lscolors
 
+echo "Installing .ssh/config..."
+mkdir -p "$HOME/.ssh"
+tee "$HOME/.ssh/config" >/dev/null <<EOF
+Host *
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+EOF
+
 echo "Installing .postinstall.sh..."
 tee "$HOME/.postinstall.sh" >/dev/null <<EOF
 #!/bin/bash
+
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+
 gsettings set org.gnome.shell disable-extension-version-validation true
 
 gnome-extensions enable keyd@keyd.rvaiya.github.com

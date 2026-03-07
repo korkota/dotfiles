@@ -110,4 +110,6 @@ alias m="MANPAGER='nvim --clean +Man!' man"
 alias ncal='ncal -s RU -M -3 -b'
 alias ncu='npx npm-check-updates'
 
+alias tmuxa='tmux new-session -A -s'
+
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
