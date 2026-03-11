@@ -4,9 +4,9 @@ set -e
 
 echo "Installing deps..."
 
-sudo pacman -Syuq --noconfirm alacritty base-devel bash-completion chromium curl fd fzf git gnome gnome-tweaks keyd lazydocker lazygit \
-  less lua-jsregexp man man-db neovim networkmanager noto-fonts-emoji nvm obsidian openssh ripgrep sudo syncthing texinfo tldr \
-  tmux trash-cli tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils vlc xclip zip
+sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
+  less lf lua-jsregexp man man-db mpv neovim networkmanager noto-fonts-emoji nvm obsidian openssh playerctl ripgrep sudo syncthing texinfo tealdeer \
+  tmux trash-cli tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils xclip zip
 
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 source "$HOME/.profile"
@@ -64,13 +64,16 @@ echo "Installing paru..."
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
+cd -
+rm -rf ./paru
+
 paru --gendb
 
 echo "Installing g3kb-switch..."
 paru --noconfirm --useask -S g3kb-switch
 
 echo "Installing lscolors..."
-paru --noconfirm --useask -S lscolors
+paru --noconfirm --useask -S lscolors-git
 
 echo "Installing .ssh/config..."
 mkdir -p "$HOME/.ssh"
@@ -80,10 +83,13 @@ Host *
     IdentityFile ~/.ssh/id_ed25519
 EOF
 
+echo "Enabling vboxservice..."
+sudo usermod -aG vboxsf "$USER"
+sudo systemctl enable vboxservice
+
 echo "Installing .postinstall.sh..."
 tee "$HOME/.postinstall.sh" >/dev/null <<EOF
 #!/bin/bash
-
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"

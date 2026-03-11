@@ -110,6 +110,9 @@ alias m="MANPAGER='nvim --clean +Man!' man"
 alias ncal='ncal -s RU -M -3 -b'
 alias ncu='npx npm-check-updates'
 
+alias pmi="pacman -Sql | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias pmr="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
+
 alias tmuxa='tmux new-session -A -s'
 
 [ ! -r "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"

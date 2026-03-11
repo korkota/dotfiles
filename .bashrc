@@ -75,6 +75,8 @@ bind -m vi-command -x '"p": paste_from_clipboard 1'
 bind -m vi-command -x '"yy": yank_line_to_clipboard'
 bind -m vi-command -x '"dd": kill_line_to_clipboard'
 
+eval "$(fzf --bash)"
+
 # shellcheck disable=SC1090
 source <(minikube completion bash 2>/dev/null)
 # shellcheck disable=SC1090
