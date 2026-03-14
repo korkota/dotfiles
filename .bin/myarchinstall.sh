@@ -2,13 +2,14 @@
 
 set -e
 
-echo "Installing deps..."
+RETRY="10"
 
+echo "Installing deps..."
 sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
   less lf lua-jsregexp man man-db mpv mpv-mpris neovim networkmanager noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
   tmux trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
 
-curl -LsSf --retry 5 --retry-all-errors --retry-connrefused https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
+curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 source "$HOME/.profile"
 
 echo "Enabling syncthing..."
@@ -32,13 +33,14 @@ ln -s /usr/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/k
 echo "Installing completion for tmux..."
 dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-completion"}/completions"
 mkdir -p "$dir"
-curl -LsSf --retry 5 --retry-all-errors --retry-connrefused "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
+curl -LsSf --retry $RETRY --retry-all-errors "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
 echo "Installing the alacritty's tty config..."
-curl -LsSf --retry 5 --retry-all-errors --retry-connrefused https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 
 echo "Installing complete_alias..."
-curl -LosSf --retry 5 --retry-all-errors --retry-connrefused "$HOME/.complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
+curl -LosSf --retry $RETRY --retry-all-errors "$HOME/.complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
+[ -s "$HOME/.complete_alias" ] || exit 1
 
 echo "Installing the sudoers config..."
 sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
@@ -47,7 +49,8 @@ Defaults:%sudo env_keep += "VISUAL EDITOR"
 EOF
 
 echo "Installing the GNOME Bedtime extension..."
-curl -LOsSf --retry 5 --retry-all-errors --retry-connrefused https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v23.0/gnome-bedtime-mode_23.0.zip
+curl -LOsSf --retry $RETRY --retry-all-errors https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v23.0/gnome-bedtime-mode_23.0.zip
+[ -s "gnome-bedtime-mode_23.0.zip" ] || exit 1
 gnome-extensions install --force gnome-bedtime-mode_23.0.zip
 rm gnome-bedtime-mode_23.0.zip
 
