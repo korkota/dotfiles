@@ -8,7 +8,7 @@ sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bas
   less lf lua-jsregexp man man-db mpv mpv-mpris neovim networkmanager noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
   tmux trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
 
-curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
+curl -Lksf --retry 5 --retry-all-errors --retry-connrefused https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 source "$HOME/.profile"
 
 echo "Enabling syncthing..."
@@ -32,13 +32,13 @@ ln -s /usr/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/k
 echo "Installing completion for tmux..."
 dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-completion"}/completions"
 mkdir -p "$dir"
-curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
+curl -fSsLf --retry 5 --retry-all-errors --retry-connrefused "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
 echo "Installing the alacritty's tty config..."
-curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+curl -sSLf --retry 5 --retry-all-errors --retry-connrefused https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 
 echo "Installing complete_alias..."
-curl -Lo "$HOME/.complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
+curl -Lof --retry 5 --retry-all-errors --retry-connrefused "$HOME/.complete_alias" https://raw.githubusercontent.com/cykerway/complete-alias/refs/heads/master/complete_alias
 
 echo "Installing the sudoers config..."
 sudo tee /etc/sudoers.d/custom >/dev/null <<EOF
@@ -47,7 +47,7 @@ Defaults:%sudo env_keep += "VISUAL EDITOR"
 EOF
 
 echo "Installing the GNOME Bedtime extension..."
-curl -LO https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v23.0/gnome-bedtime-mode_23.0.zip
+curl -LOf --retry 5 --retry-all-errors --retry-connrefused https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v23.0/gnome-bedtime-mode_23.0.zip
 gnome-extensions install --force gnome-bedtime-mode_23.0.zip
 rm gnome-bedtime-mode_23.0.zip
 
