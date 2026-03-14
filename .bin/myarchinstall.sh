@@ -5,8 +5,8 @@ set -e
 echo "Installing deps..."
 
 sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
-  less lf lua-jsregexp man man-db mpv neovim networkmanager noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
-  tmux trash-cli tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
+  less lf lua-jsregexp man man-db mpv mpv-mpris neovim networkmanager noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
+  tmux trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
 
 curl -Lks https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 source "$HOME/.profile"
@@ -97,6 +97,8 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 
 gsettings set org.gnome.shell disable-extension-version-validation true
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 gnome-extensions enable keyd@keyd.rvaiya.github.com
 gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
