@@ -2,11 +2,11 @@
 
 set -e
 
-RETRY="10"
+RETRY=10
 
 echo "Installing deps..."
 sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
-  less lf lua-jsregexp man man-db mpv mpv-mpris neovim networkmanager noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
+  less lf lua-jsregexp man-db man-pages mpv mpv-mpris neovim networkmanager noto-fonts noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
   tmux trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
 
 curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
@@ -33,7 +33,7 @@ ln -s /usr/share/keyd/gnome-extension-45 ~/.local/share/gnome-shell/extensions/k
 echo "Installing completion for tmux..."
 dir="${BASH_COMPLETION_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}/bash-completion"}/completions"
 mkdir -p "$dir"
-curl -LsSf --retry $RETRY --retry-all-errors "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" >"${dir?error: dir not set: you must run the previous commands first}/tmux"
+curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux >"${dir?error: dir not set: you must run the previous commands first}/tmux"
 
 echo "Installing the alacritty's tty config..."
 curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
@@ -91,6 +91,9 @@ EOF
 echo "Enabling vboxservice..."
 sudo usermod -aG vboxsf "$USER"
 sudo systemctl enable vboxservice
+
+echo "Changing /etc/pacman.conf..."
+sudo sed -i 's/^#Color$/Color\nILoveCandy/g' /etc/pacman.conf
 
 echo "Installing .postinstall.sh..."
 tee "$HOME/.postinstall.sh" >/dev/null <<EOF
