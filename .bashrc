@@ -54,7 +54,7 @@ paste_from_clipboard() {
   local tail=${READLINE_LINE:READLINE_POINT+shift}
 
   local paste
-  paste=$(xclip -out -selection clipboard)
+  paste=$(wl-paste -n)
   local paste_len=${#paste}
 
   READLINE_LINE=${head}${paste}${tail}
@@ -62,7 +62,7 @@ paste_from_clipboard() {
 }
 
 yank_line_to_clipboard() {
-  echo "$READLINE_LINE" | xclip -in -selection clipboard
+  echo "$READLINE_LINE" | wl-copy
 }
 
 kill_line_to_clipboard() {

@@ -16,3 +16,7 @@ size = 12
   [font.bold_italic]
   family = "termfont"
   style = "Bold Italic"
+
+# TODO: check this setting
+# [terminal]
+# osc52 = "CopyPaste"

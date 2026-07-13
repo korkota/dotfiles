@@ -5,9 +5,9 @@ set -e
 RETRY=10
 
 echo "Installing deps..."
-sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
-  less lf lua-jsregexp man-db man-pages mpv mpv-mpris neovim networkmanager noto-fonts noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
-  tmux trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber xclip zip
+sudo pacman -Syuq --noprogressbar --noconfirm alacritty bandwhich base-devel bash-completion bind chromium curl dysk fd fzf git gnome gnome-tweaks htop keyd lazydocker lazygit \
+  less lf lua-jsregexp man-db man-pages mpv mpv-mpris mtr neovim networkmanager noto-fonts noto-fonts-emoji nvm obsidian openssh pipewire pipewire-audio pipewire-alsa pipewire-pulse playerctl ripgrep sudo syncthing texinfo tealdeer \
+  tmux traceroute trash-cli tree tree-sitter-cli ttf-jetbrains-mono-nerd virtualbox-guest-utils wireplumber wl-clipboard zip
 
 curl -LsSf --retry $RETRY --retry-all-errors https://raw.githubusercontent.com/korkota/dotfiles/main/.bin/install.sh | /bin/bash
 source "$HOME/.profile"

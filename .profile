@@ -29,7 +29,7 @@ fi
 EDITOR=$VISUAL
 
 export VISUAL EDITOR
-export LESS='-R'
+export LESS='-R --mouse'
 export GIT_COMPLETION_SHOW_ALL=1
 export NVM_DIR="$HOME/.nvm"
 
