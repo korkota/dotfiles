@@ -7,14 +7,6 @@ Required
 - curl
 - git
 
-Optional
-
-- fd
-- ripgrep
-- neovim
-- nerd font
-- xclip
-
 ## Install
 
 Copy and run the script below to install the config in your `$HOME`:
